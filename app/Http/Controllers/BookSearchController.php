@@ -31,14 +31,15 @@ class BookSearchController extends Controller
     {
         
        $checkedbook = $request->request->all();
-   
+        
+     
 
        $checkout = Checkout::create([
-        "bookid" => $checkedbook['bookid'],
         "userid" => $checkedbook['user'],
+        "bookid" => $checkedbook['bookid']
     ]);
-    dd($checkout);
-    $books = DB::table('checkout')->get();
+
+    $books = DB::table('checkouts')->get();
   
         
     }
@@ -72,6 +73,14 @@ class BookSearchController extends Controller
     {
         // $books = DB::table('books')->get();
         //dd($request);
+
+        request()->validate([
+            "title" => 'required',
+            "author" =>  'required',
+            "isbn" => 'required'
+
+        ]);
+
         $book = Book::create([
             "title" => $request->title,
             "author" => $request->author,
@@ -87,9 +96,10 @@ class BookSearchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function showall()
     {
-        //
+        $books = DB::table('books')->get();
+        return view('catalog',['books'=>$books]);
     }
 
     /**

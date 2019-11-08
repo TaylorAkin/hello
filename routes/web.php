@@ -23,7 +23,7 @@ Route::post('/booksearch', 'BookSearchController@search')->name('booksearch');
 Route::get('/booksearch', 'BookSearchController@index')->name('booksearch');
 
 Route::post('/catalog', 'BookSearchController@show')->name('datatocatalog');
-Route::get('/catalog', 'BookSearchController@show')->name('catalog');
+Route::get('/catalog', 'BookSearchController@showall')->name('catalog');
 Route::post('/catalog/delete', 'BookSearchController@deleteitem')->name('deleteitem');
 Route::get('/cardholders', 'CardHoldersController@show')->name('cardholders');
 
