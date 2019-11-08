@@ -12,44 +12,64 @@
          @foreach ($books as $book)
 
 
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
+            <table class='table'>
+                <tbody class="thumbnail">
                 
-                    <div class="caption">
-                        <h1>{{ $book->title }}</h1>
-                        <h3>{{ $book->author }}  </h3>
+                    <tr class="caption">
+                        <td>{{ $book->title }}</td>
+                        <td>{{ $book->author }}  </td>
 
 
                 @hasrole('librarian')
-                        <form action="/catalog/delete" method="POST">
-                            @csrf
-                            @method('post')
-                                <input type='hidden' name='book' value="{{$book->title}}" />
-                                <input type='submit' value='Remove'></input>
-                        </form>
 
-                        <form action="/catalog/checkinout" method="POST">
-                            @csrf
-                            @method('post')
-                                <input type='hidden' name='book' value="{{$book->title}}" />
-                                <input type='submit' value='Check-In/Check-Out'></input>
-                        </form>
+                <td>
 
-                        <form action="/catalog/whohasit" method="POST">
-                            @csrf
-                            @method('post')
-                                <input type='hidden' name='book' value="{{$book->title}}" />
-                                <input  type=submit value='Who has it '></input>
-                        </form>
+                    <form action="/catalog/delete" method="POST">
+                        @csrf
+                        @method('post')
+                            <input type='hidden' name='book' value="{{$book->title}}" />
+                            <input type='submit' value='Remove'></input>
+                    </form>
+
+                </td>
+
+                <td>
+
+                    <form action="/catalog/checkinout" method="POST">
+                        @csrf
+                        @method('post')
+                            <input type='hidden' name='book' value="{{$book->title}}" />
+                            <input type='submit' value='Check-In/Check-Out'></input>
+                    </form>
+
+                </td>
+
+                <td>
+
+                    <form action="/catalog/whohasit" method="POST">
+                        @csrf
+                        @method('post')
+                            <input type='hidden' name='book' value="{{$book->title}}" />
+                            <input  type=submit value='Who has it '></input>
+                    </form>
+
+                </td>
+
+
                 @else
-                        <form action="/home/checkout" method="POST">
-                            @csrf
 
-                                <input type='hidden' name='bookid' value="{{$book->id}}" />
-                                <input type='hidden' name='user' value="{{Auth::User()->id}}" />
-                                <input type='submit' value='Reserve'></input>
-                              
-                        </form>
+                <td>
+
+                    <form action="/home/checkout" method="POST">
+                        @csrf
+
+                            <input type='hidden' name='bookid' value="{{$book->id}}" />
+                            <input type='hidden' name='user' value="{{Auth::User()->id}}" />
+                            <input type='submit' value='Reserve'></input>
+                          
+                    </form>
+
+                </td>
                 
                 @endhasrole
                 
@@ -60,11 +80,11 @@
                                 
 
                         
-                    </div>
+                    </tr>
                     
               
-                </div>
-            </div>
+                </tbody>
+            </t>
         @endforeach
              
 

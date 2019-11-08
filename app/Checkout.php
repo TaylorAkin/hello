@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Checkout extends Model
 {
-    //
-    protected $fillable = ["userid", "bookid"];
+    
+    public function book(){
+        return $this->belongsTo(Book::class, "bookid");
+    }
+
+    public function cardholder(){
+        return $this->belongsTo(User::class, "userid");
+    }
+
+
+    protected $fillable = [
+        "userid", 
+        "bookid"
+    ];
 }

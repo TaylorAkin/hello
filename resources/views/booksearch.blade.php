@@ -43,7 +43,8 @@
                             @csrf
                             @method('post')
                                 <input name="title" type='hidden' value='{{ $book->volumeInfo->title }}'></input>
-                                <input name="author" type='hidden' value='{{ $book->volumeInfo->authors[0] }}'></input>
+                                <input name="author" type='hidden' 
+                                value='  {{ array_key_exists('authors',$book->volumeInfo) ? $book->volumeInfo->authors[0] : 'Ghost Writer' }}'></input>
                                 <input name="isbn" type='hidden' value='{{ $book->volumeInfo->industryIdentifiers[0]->identifier }}'></input>
                                 <input type=submit value="Add To Catalog"></input>
                             

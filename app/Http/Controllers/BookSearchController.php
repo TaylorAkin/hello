@@ -109,9 +109,12 @@ class BookSearchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+     
+    public function viewcheckout(Request $request)
     {
-        //
+        $checkedbook = Checkout::all();
+        return view('viewcheckout', ['checkedbooks' => $checkedbooks]);
     }
 
     /**

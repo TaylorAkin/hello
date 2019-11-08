@@ -15,9 +15,41 @@
                     @endif
 
                     You are logged in!
+
+
+
+
+                       <div class="panel panel-default">
+                        <div class="panel-heading"><h1>Checked Out Books</h1></div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    
+                                    
+                                    <div class="col-sm-6 col-md-4">
+                                        <ul class="thumbnail">
+                                                
+                                            @isset($checkedbooks)
+                                            @foreach ($checkedbooks as $checkbook)
+                            
+                                                <li>{{$checkbook->book['title']}}</li>
+                                                
+                                            @endforeach
+                                            @endisset
+
+                                            </ul>
+                                        </div>
+
+                            
+                                
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home/checkout', 'BookSearchController@usercheckout')->name('usercheckout');
+Route::get('/home/checkout', 'BookSearchController@viewcheckout')->name('viewcheckout');
+
 Route::post('/booksearch', 'BookSearchController@search')->name('booksearch');
 Route::get('/booksearch', 'BookSearchController@index')->name('booksearch');
 
@@ -27,9 +29,3 @@ Route::get('/catalog', 'BookSearchController@showall')->name('catalog');
 Route::post('/catalog/delete', 'BookSearchController@deleteitem')->name('deleteitem');
 Route::get('/cardholders', 'CardHoldersController@show')->name('cardholders');
 
-// Route::get('/articles' , 'ArticlesController@index');
-// Route::post('articles', 'ArticlesController@store');
-// Route::get('/articles/create' ,'ArticlesController@create');
-// Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
-// Route::get('/articles/{article}/edit', 'ArticlesController@edit');
-// Route::put('/articles/{article}', 'ArticlesController@update');
