@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         // dd(Checkout::all());
+
         return view('home', [
             'checkedbooks' => Checkout::all()
         ]);

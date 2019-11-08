@@ -2,19 +2,19 @@
 
 @section('content')
 
-<h1> Book Search</h1>
+<div class='display-1 text-center'> Book Search</div>
     <form role="form" method="POST" action="/booksearch">
 @csrf
 @method('post')
 
-    <h1>Book Title</h1>
+    <h1 class=''>Book Title</h1>
         Title:<br>
     <input type="text" name="booktitle" ><br>
 
         Author:<br>
     <input type="text" name="bookauthor" ><br>
 
-        <h1>Submit</h1>
+        
      <input type="submit" value="Submit">
 
     </form>
@@ -30,29 +30,31 @@
             @isset($books)
             @foreach ($books as $book)
 
+            <div class="container">
 
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                           
-                            <div class="caption">
-                                <h3>{{ $book->volumeInfo->title }}</h3>
-                                
-                            </div>
-
-                            <form action="/catalog" method="POST">
-                            @csrf
-                            @method('post')
-                                <input name="title" type='hidden' value='{{ $book->volumeInfo->title }}'></input>
-                                <input name="author" type='hidden' 
-                                value='  {{ array_key_exists('authors',$book->volumeInfo) ? $book->volumeInfo->authors[0] : 'Ghost Writer' }}'></input>
-                                <input name="isbn" type='hidden' value='{{ $book->volumeInfo->industryIdentifiers[0]->identifier }}'></input>
-                                <input type=submit value="Add To Catalog"></input>
-                            
-                            
-                            
-                            </form>
+                <table class="table">
+                    <tbody>  
+                        <div>
+                            <h3>{{ $book->volumeInfo->title }}</h3>                        
                         </div>
-                    </div>
+
+                        <td>
+                            <tr>
+                                <form action="/catalog" method="POST">
+                                @csrf
+                                @method('post')
+                                    <input name="title" type='hidden' value='{{ $book->volumeInfo->title }}'></input>
+                                    <input name="author" type='hidden' 
+                                    value='  {{ array_key_exists('authors',$book->volumeInfo) ? $book->volumeInfo->authors[0] : 'Ghost Writer' }}'></input>
+                                    <input name="isbn" type='hidden' value='{{ $book->volumeInfo->industryIdentifiers[0]->identifier }}'></input>
+                                    <input type=submit value="Add To Catalog"></input>
+                                                                                                   
+                                </form>
+                            </tr>
+                        </td>
+                    </tbody>
+                </table>
+            </div>
             @endforeach
             @endisset
 
