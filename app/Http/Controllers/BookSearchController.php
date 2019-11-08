@@ -41,6 +41,9 @@ class BookSearchController extends Controller
 
     $books = DB::table('checkouts')->get();
   
+    return view('home', [
+        'checkedbooks' => Checkout::all()
+    ]);
         
     }
 

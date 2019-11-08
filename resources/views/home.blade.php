@@ -19,32 +19,37 @@
 
 
 
-                       <div class="panel panel-default">
-                        <div class="panel-heading"><h1>Checked Out Books</h1></div>
-                            <div class="panel-body">
-                                <div class="row">
+                       
+                        <div class="container text-center">
+                            <h1>Checked Out Books</h1>
+                            <div class="row">
+                                
                                     
                                     
-                                    <div class="col-sm-6 col-md-4">
-                                        <ul class="thumbnail">
+                                    <div class="col">
+                                        <ul class="thumbnail list-unstyled">
                                                 
                                             @isset($checkedbooks)
                                             @foreach ($checkedbooks as $checkbook)
                             
-                                                <li>{{$checkbook->book['title']}}</li>
-                                                
+                                                <li>Book Title:  {{$checkbook->book['title']}}</li>
+                                                <p>Checked Out By: <h5>{{$checkbook->cardholder['name']}}</h5></p>
+
                                             @endforeach
                                             @endisset
 
-                                            </ul>
-                                        </div>
+                                       
+                                        </ul>
+                                    </div>
+
+                            <h1 class="text-center">COME TO THE LIBRARY AND GET YOUR BOOK</h1>
 
                             
                                 
 
-                                </div>
+                            
                             </div>
-                        </div>
+                         </div>
                     </div>
                 </div>
             </div>

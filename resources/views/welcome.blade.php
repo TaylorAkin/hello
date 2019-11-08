@@ -23,7 +23,7 @@
 
 
                 @hasrole('librarian')
-                   Welcome Back
+                   Welcome Back Librarian<br>
                     <button>
                     <a href="{{ route('booksearch') }}">Book Search</a>
                            
@@ -35,20 +35,24 @@
                     <button>
                     <a href="{{ route('cardholders') }}">Card Holders</a>
                     </button>
+                    <button>
+                    <a href="{{ route('home') }}">Checked Out Books</a>
+                    </button>
                 @endhasrole
 
                  @hasrole('cardholder')
-                   Welcome Back
-
+                   Welcome Back <br>
+                                <br>
                     <button>
                     <a href="{{ route('catalog') }}">Library Catalog</a>
                     </button>
 
                      <button>
-                    <a href="{{ route('catalog') }}">My Books</a>
+                    <a href="{{ route('home') }}">My (everyone's) Books</a>
                     </button>
                     
                 @else
+                        <br>
                     Welcome to Laravel Library <br>
                   
 

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-use App\Book;
+use App\User;
+use Auth;
 
 use DB;
 
@@ -18,7 +19,10 @@ class CardHoldersController extends Controller
      */
     public function index()
     {
-     
+        $cardholders = User::role('cardholder')->get();
+        return view('cardholders', [
+            'cardholders' => $cardholders
+        ]);
     }
 
     /**
@@ -52,7 +56,10 @@ class CardHoldersController extends Controller
     public function show(Request $request)
     {
  
-     return view('cardholders');
+        $cardholders = User::role('cardholder')->get();
+        return view('cardholders', [
+            'cardholders' => $cardholders
+        ]);
     }
 
     /**
